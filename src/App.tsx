@@ -21,7 +21,7 @@ function App() {
   const [data,setData]=useState<Record<string, any>[]>([])
 
   useEffect(()=>{
-    getData('1day','AAPL',30)
+    getData('1month','AAPL',30)
   },[])
   return (
     <div className='w-[100vw] h-[100vh] gap-x-2 bg-black flex justify-center items-center p-5'>
