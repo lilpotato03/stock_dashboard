@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Candle from './components/Candle';
 import axios from "axios"
+import Graph from './components/Graph';
 
 function App() {
 
@@ -17,20 +18,14 @@ function App() {
       console.log(e.message)
     }
   }
-  const [data,setData]=useState([])
+  const [data,setData]=useState<Record<string, any>[]>([])
 
   useEffect(()=>{
     getData('1day','AAPL',30)
   },[])
   return (
-    <div className='w-[100vw] h-[100vh] gap-x-2 bg-black flex justify-center items-center'>
-      hello world
-      {
-        data.length>0?data[1].map((info:Record<string,string>,id:number)=>(
-        <Candle key={id} meta={data[0]} val={info} />
-          )
-        ):<></>
-      }
+    <div className='w-[100vw] h-[100vh] gap-x-2 bg-black flex justify-center items-center p-5'>
+      <Graph data={data}/>
     </div>
   )
 }
